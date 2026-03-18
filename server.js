@@ -3,8 +3,8 @@ const https = require('https');
 const API_KEY = process.env.DVSA_API_KEY;
 
 const options = {
-  hostname: 'api.check-mot.service.gov.uk',
-  path: '/v1/trade/vehicles/mot-tests?registration=AA12ABC', // test reg
+  host: 'api.check-mot.service.gov.uk', // 👈 use "host" not hostname
+  path: '/v1/trade/vehicles/mot-tests?registration=AA12ABC',
   method: 'GET',
   headers: {
     'x-api-key': API_KEY,
@@ -12,7 +12,7 @@ const options = {
   }
 };
 
-const req = https.request(options, res => {
+const req = https.request(options, (res) => {
   let data = '';
 
   res.on('data', chunk => {
@@ -25,8 +25,8 @@ const req = https.request(options, res => {
   });
 });
 
-req.on('error', error => {
-  console.error('ERROR:', error);
+req.on('error', (error) => {
+  console.error('ERROR:', error.message);
 });
 
 req.end();

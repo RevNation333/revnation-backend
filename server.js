@@ -4,7 +4,7 @@ const API_KEY = process.env.DVSA_API_KEY;
 
 const options = {
   hostname: 'api.check-mot.service.gov.uk',
-  path: '/trade/vehicles/mot-tests?registration=AA19AAA',
+  path: '/v1/trade/vehicles/mot-tests?registration=AA12ABC', // test reg
   method: 'GET',
   headers: {
     'x-api-key': API_KEY,

@@ -3,12 +3,13 @@ const https = require('https');
 const API_KEY = process.env.DVSA_API_KEY;
 
 const options = {
-  host: 'api.check-mot.service.gov.uk', // 👈 use "host" not hostname
+  host: 'api.check-mot.service.gov.uk',
   path: '/v1/trade/vehicles/mot-tests?registration=AA12ABC',
   method: 'GET',
   headers: {
     'x-api-key': API_KEY,
-    'Accept': 'application/json'
+    'Accept': 'application/json',
+    'User-Agent': 'RevNation-App'
   }
 };
 

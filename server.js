@@ -7,7 +7,9 @@ async function testDVSA() {
     const res = await axios.get(
       'https://api.check-mot.service.gov.uk/v1/trade/vehicles/mot-tests',
       {
-        params: { registration: 'AA12ABC' },
+        params: {
+          registration: 'AA12ABC'
+        },
         headers: {
           'x-api-key': API_KEY,
           'Accept': 'application/json',
@@ -21,6 +23,10 @@ async function testDVSA() {
 
   } catch (err) {
     console.error('ERROR:', err.message);
+    if (err.response) {
+      console.error('RESPONSE STATUS:', err.response.status);
+      console.error('RESPONSE DATA:', err.response.data);
+    }
   }
 }
 

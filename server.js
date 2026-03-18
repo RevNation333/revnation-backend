@@ -1,33 +1,27 @@
-const https = require('https');
+const axios = require('axios');
 
 const API_KEY = process.env.DVSA_API_KEY;
 
-const options = {
-  host: 'tapi.dvsa.gov.uk',
-  path: '/trade/vehicles/mot-tests?registration=AA12ABC',
-  method: 'GET',
-  headers: {
-    'x-api-key': API_KEY,
-    'Accept': 'application/json',
-    'User-Agent': 'RevNation-App'
+async function testDVSA() {
+  try {
+    const res = await axios.get(
+      'https://api.check-mot.service.gov.uk/v1/trade/vehicles/mot-tests',
+      {
+        params: { registration: 'AA12ABC' },
+        headers: {
+          'x-api-key': API_KEY,
+          'Accept': 'application/json',
+          'User-Agent': 'RevNation-App'
+        }
+      }
+    );
+
+    console.log('STATUS:', res.status);
+    console.log('DATA:', res.data);
+
+  } catch (err) {
+    console.error('ERROR:', err.message);
   }
-};
+}
 
-const req = https.request(options, (res) => {
-  let data = '';
-
-  res.on('data', chunk => {
-    data += chunk;
-  });
-
-  res.on('end', () => {
-    console.log('STATUS:', res.statusCode);
-    console.log('BODY:', data);
-  });
-});
-
-req.on('error', (error) => {
-  console.error('ERROR:', error.message);
-});
-
-req.end();
+testDVSA();

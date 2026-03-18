@@ -1,9 +1,12 @@
 {
   "name": "revnation-backend",
   "version": "1.0.0",
+  "description": "RevNation DVSA backend",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^1.6.8"
+  }
 }

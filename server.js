@@ -3,8 +3,8 @@ const https = require('https');
 const API_KEY = process.env.DVSA_API_KEY;
 
 const options = {
-  host: 'api.check-mot.service.gov.uk',
-  path: '/v1/trade/vehicles/mot-tests?registration=AA12ABC',
+  host: 'tapi.dvsa.gov.uk',
+  path: '/trade/vehicles/mot-tests?registration=AA12ABC',
   method: 'GET',
   headers: {
     'x-api-key': API_KEY,
